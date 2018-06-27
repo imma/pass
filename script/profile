@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+function _pass_profile {
+  local shome="${_pass_home:="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
+  PATH="$shome/bin:$shome/exec:$PATH"
+}
+
+_pass_profile

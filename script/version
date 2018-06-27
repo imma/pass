@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+function version {
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
+  source "$shome/script/profile"
+
+  local ver_pass="$(pass 2>/dev/null | awk '{print $NF}' | sed 's#^v##' || true)"
+  jq -n --arg pass "$ver_pass" '{pass: $pass}'
+}
+
+version "$@"
