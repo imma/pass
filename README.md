@@ -1,0 +1,1 @@
+content/pass.md
