@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+function main {
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
+
+  case "${1:-}" in
+    show)
+      "$PKG_HOME/install/bin/pass" "$@" | perl -pe 's{\s*$}{}'
+      ;;
+    *)
+      exec "$PKG_HOME/install/bin/pass" "$@"
+      ;;
+  esac
+}
+
+main "$@"
